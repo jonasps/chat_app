@@ -10,4 +10,8 @@ Run ```flask run```
 Test ``` python -m unittest -v server/tests/test_app.py```
 
 
-React front-end using [create-react-app](https://github.com/facebook/create-react-app)
+React frontend using [create-react-app](https://github.com/facebook/create-react-app)
+
+using yarn instead of npm (npm will also work).
+
+Run ``` cd client && yarn start ```
