@@ -4,10 +4,23 @@ import { socketWrapper } from "../utils/socketWrapper";
 export class MessagePanel extends Component {
   constructor(props) {
     super(props);
+    this.state = { messages: [] };
   }
 
+  componentDidMount() {
+    this.props.socket.on("message", msg => {
+      this.setState({
+        messages: [...this.state.messages, msg]
+      });
+    });
+  }
+
+  renderMessages = () =>
+    this.state.messages.map((item, index) => (
+      <div key={index}>{item.message}</div>
+    ));
+
   render() {
-    console.log(this.props.socket);
     return (
       <div
         style={{
@@ -16,7 +29,9 @@ export class MessagePanel extends Component {
           height: "30rem",
           backgroundColor: "gray"
         }}
-      />
+      >
+        {this.renderMessages()}
+      </div>
     );
   }
 }

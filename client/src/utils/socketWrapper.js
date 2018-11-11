@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import io from "socket.io-client";
+import socket from "./socket-io-singelton";
 
 export const socketWrapper = () => {
   // this is a hoc component it enhance it's child with a socket prop
@@ -10,7 +10,7 @@ export const socketWrapper = () => {
         this.state = { connection: false };
       }
       componentDidMount() {
-        this.socket = io("http://localhost:5000");
+        this.socket = socket;
         this.socket.on("connect", () => {
           this.setState({ connection: true });
         });

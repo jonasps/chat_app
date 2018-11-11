@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MessagePanel from "./chatBox/MessagePanel";
-import { ControlPanel } from "./chatBox/ControlPanel";
+import ControlPanel from "./chatBox/ControlPanel";
 
 import "./App.css";
 
