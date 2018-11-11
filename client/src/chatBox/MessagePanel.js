@@ -17,7 +17,9 @@ export class MessagePanel extends Component {
 
   renderMessages = () =>
     this.state.messages.map((item, index) => (
-      <div key={index}>{item.message}</div>
+      <div data-class="message-in-chat" key={index}>
+        {item.message}
+      </div>
     ));
 
   render() {
