@@ -17,8 +17,13 @@ export class MessagePanel extends Component {
 
   renderMessages = () =>
     this.state.messages.map((item, index) => (
-      <div data-class="message-in-chat" key={index}>
-        {item.message}
+      <div className="chatMessage" data-class="message-in-chat" key={index}>
+        <span style={{ textAlign: "left" }}>
+          <span style={{ color: "black", marginRight: "2rem" }}>
+            #{item.name}
+          </span>
+          <span>->: {item.message}</span>
+        </span>
       </div>
     ));
 
@@ -29,7 +34,8 @@ export class MessagePanel extends Component {
           margin: "0px auto",
           width: "30rem",
           height: "30rem",
-          backgroundColor: "gray"
+          backgroundColor: "gray",
+          overflow: "scroll"
         }}
       >
         {this.renderMessages()}

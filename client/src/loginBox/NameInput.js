@@ -18,15 +18,22 @@ export class NameInput extends Component {
     this.setState({ message: "" });
   }
 
+  _handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.sendName();
+    }
+  };
+
   render() {
     return (
       <div>
         <input
-          placeholder="write text"
+          placeholder="Write your name"
           value={this.state.name}
           onChange={evt => {
             this.setState({ name: evt.target.value });
           }}
+          onKeyPress={this._handleKeyPress}
         />
         <button onClick={() => this.sendName()}>Log in!</button>
       </div>
