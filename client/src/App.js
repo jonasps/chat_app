@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import MessagePanel from "./chatBox/MessagePanel";
 import ControlPanel from "./chatBox/ControlPanel";
@@ -9,13 +10,22 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <NameInput />
-          <MessagePanel />
-          <ControlPanel />
+          {this.props.name ? (
+            <div>
+              <MessagePanel />
+              <ControlPanel />
+            </div>
+          ) : (
+            <NameInput />
+          )}
         </header>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  name: state.name
+});
+
+export default connect(mapStateToProps)(App);

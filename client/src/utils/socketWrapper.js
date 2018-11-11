@@ -16,13 +16,9 @@ export const socketWrapper = () => {
         });
       }
       render() {
-        if (this.state.connection) {
+        if (socket.connected) {
           return (
-            <BaseComponent
-              {...this.props}
-              {...this.state}
-              socket={this.socket}
-            />
+            <BaseComponent {...this.props} {...this.state} socket={socket} />
           );
         }
         return <div>...Loading</div>;
