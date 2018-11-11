@@ -15,3 +15,5 @@ React frontend using [create-react-app](https://github.com/facebook/create-react
 using yarn instead of npm (npm will also work).
 
 Run ``` cd client && yarn start ```
+
+- format js code with prettier ```prettier --write path/to/file.js ```
