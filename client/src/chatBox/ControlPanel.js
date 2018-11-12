@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { socketWrapper } from "../utils/socketWrapper";
 
 export class ControlPanel extends Component {
@@ -10,7 +11,7 @@ export class ControlPanel extends Component {
   }
   sendMessage() {
     const { message } = this.state;
-    this.props.socket.emit("message", { message });
+    this.props.socket.emit("message", {message, name: this.props.name });
     this.setState({ message: "" });
   }
 
@@ -37,4 +38,8 @@ export class ControlPanel extends Component {
   }
 }
 
-export default socketWrapper()(ControlPanel);
+const mapStateToProps = state => ({
+  name: state.name
+});
+
+export default connect(mapStateToProps)(socketWrapper()(ControlPanel));

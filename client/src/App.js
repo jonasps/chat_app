@@ -1,20 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import MessagePanel from "./chatBox/MessagePanel";
 import ControlPanel from "./chatBox/ControlPanel";
-
-import "./App.css";
+import NameInput from "./loginBox/NameInput";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <MessagePanel />
-          <ControlPanel />
+          {this.props.name ? (
+            <div>
+              <MessagePanel />
+              <ControlPanel />
+            </div>
+          ) : (
+            <NameInput />
+          )}
         </header>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  name: state.name
+});
+
+export default connect(mapStateToProps)(App);
