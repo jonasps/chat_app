@@ -5,24 +5,10 @@ export const socketWrapper = () => {
   // this is a hoc component it enhance it's child with a socket prop
   return BaseComponent => {
     return class extends Component {
-      constructor() {
-        super();
-        this.state = { connection: false };
-      }
-      componentDidMount() {
-        this.socket = socket;
-        this.socket.on("connect", () => {
-          this.setState({ connection: true });
-        });
-      }
       render() {
-        if (this.state.connection) {
+        if (socket.connected) {
           return (
-            <BaseComponent
-              {...this.props}
-              {...this.state}
-              socket={this.socket}
-            />
+            <BaseComponent {...this.props} {...this.state} socket={socket} />
           );
         }
         return <div>...Loading</div>;
