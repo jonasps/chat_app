@@ -1,4 +1,5 @@
 import io from "socket.io-client";
-const socket = io("http://localhost:5000");
+import { socketServer } from "../constants";
+const socket = io(socketServer);
 
 export default socket;
