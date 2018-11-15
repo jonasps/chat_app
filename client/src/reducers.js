@@ -1,5 +1,6 @@
 const initialState = {
-  name: ""
+  name: "",
+  socketId: ""
 };
 
 export const chatReducer = (state = initialState, action) => {
@@ -8,8 +9,11 @@ export const chatReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         name: action.payload
       });
+    case "SET_SOCKET_ID":
+      return Object.assign({}, state, {
+        socketId: action.payload
+      });
     default:
       return state;
   }
 };
-
