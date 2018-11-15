@@ -47,5 +47,13 @@ def handle_message(message):
     emit('message', message, broadcast=True)
 
 
+@socketio.on('disconnect')
+def disconnect():
+    """ free up user_name after user loggs in """
+    for user_name, socket_id in logged_in_users.items():
+        if socket_id == request.sid:
+            del logged_in_users[user_name]
+
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
