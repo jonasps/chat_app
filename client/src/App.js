@@ -17,16 +17,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+         <h1>Chat app</h1>
+        <div className="container">
           {this.props.name ? (
             <div>
               <MessagePanel />
               <ControlPanel />
             </div>
           ) : (
-            <NameInput />
+            <div>
+              <NameInput />
+            </div>
           )}
-        </header>
+        </div>
       </div>
     );
   }

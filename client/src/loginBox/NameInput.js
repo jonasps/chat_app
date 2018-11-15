@@ -47,17 +47,26 @@ export class NameInput extends Component {
   render() {
     return (
       <div>
-        <input
-          placeholder="Write your name"
-          value={this.state.name}
-          onChange={evt => {
-            this.setState({ errorMessage: "" });
-            this.setState({ name: evt.target.value });
-          }}
-          onKeyPress={this._handleKeyPress}
-        />
-        <button onClick={() => this.postNameToServer()}>Log in!</button>
-        <div style={{ position: "absolute" }}>{this.state.errorMessage}</div>
+        <div className="controlPanel">
+          <input
+            className="main-input-style"
+            placeholder="Write your name and join"
+            value={this.state.name}
+            onChange={evt => {
+              this.setState({ errorMessage: "" });
+              this.setState({ name: evt.target.value });
+            }}
+            onKeyPress={this._handleKeyPress}
+            autoFocus
+          />
+          <button
+            className="main-input-button"
+            onClick={() => this.postNameToServer()}
+          >
+            Log in!
+          </button>
+        </div>
+        <div className="login-error-message">{this.state.errorMessage}</div>
       </div>
     );
   }

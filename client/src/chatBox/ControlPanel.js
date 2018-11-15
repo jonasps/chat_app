@@ -11,7 +11,7 @@ export class ControlPanel extends Component {
   }
   sendMessage() {
     const { message } = this.state;
-    this.props.socket.emit("message", {message, name: this.props.name });
+    this.props.socket.emit("message", { message, name: this.props.name });
     this.setState({ message: "" });
   }
 
@@ -23,16 +23,23 @@ export class ControlPanel extends Component {
 
   render() {
     return (
-      <div>
+      <div className="controlPanel">
         <input
           placeholder="write text"
+          className="main-input-style chat"
           value={this.state.message}
           onChange={evt => {
             this.setState({ message: evt.target.value });
           }}
           onKeyPress={this._handleKeyPress}
+          autoFocus
         />
-        <button onClick={() => this.sendMessage()}>send</button>
+        <button
+          className="main-input-button"
+          onClick={() => this.sendMessage()}
+        >
+          send
+        </button>
       </div>
     );
   }
