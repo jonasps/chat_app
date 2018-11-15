@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="container">
           {this.props.name ? (
             <div>
               <MessagePanel />
@@ -26,7 +26,7 @@ class App extends Component {
           ) : (
             <NameInput />
           )}
-        </header>
+        </div>
       </div>
     );
   }
