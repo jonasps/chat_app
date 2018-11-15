@@ -50,7 +50,7 @@ export class NameInput extends Component {
         <div className="controlPanel">
           <input
             className="main-input-style"
-            placeholder="Write your name"
+            placeholder="Write your name and join"
             value={this.state.name}
             onChange={evt => {
               this.setState({ errorMessage: "" });

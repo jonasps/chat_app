@@ -17,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+         <h1>Chat app</h1>
         <div className="container">
           {this.props.name ? (
             <div>
@@ -24,7 +25,9 @@ class App extends Component {
               <ControlPanel />
             </div>
           ) : (
-            <NameInput />
+            <div>
+              <NameInput />
+            </div>
           )}
         </div>
       </div>
