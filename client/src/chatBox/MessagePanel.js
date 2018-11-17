@@ -15,6 +15,14 @@ export class MessagePanel extends Component {
     });
   }
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom = () => {
+    this.messagesBottom.scrollIntoView({ behavior: "smooth" });
+  };
+
   renderMessages = () =>
     this.state.messages.map((item, index) => (
       <div className="chatMessage" data-class="message-in-chat" key={index}>
@@ -28,7 +36,16 @@ export class MessagePanel extends Component {
     ));
 
   render() {
-    return <div className="message-panel">{this.renderMessages()}</div>;
+    return (
+      <div className="message-panel">
+        {this.renderMessages()}
+        <div
+          ref={el => {
+            this.messagesBottom = el;
+          }}
+        />
+      </div>
+    );
   }
 }
 
