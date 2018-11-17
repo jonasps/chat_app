@@ -31,13 +31,6 @@ export class NameInput extends Component {
       });
   }
 
-  sendName() {
-    this.postNameToServer();
-    const { name } = this.state;
-    this.props.sendName(name);
-    this.setState({ message: "" });
-  }
-
   _handleKeyPress = e => {
     if (e.key === "Enter") {
       this.postNameToServer();
@@ -66,7 +59,9 @@ export class NameInput extends Component {
             Log in!
           </button>
         </div>
-        <div className="login-error-message">{this.state.errorMessage}</div>
+        <div className="login-error-message" data-class="login-error">
+          {this.state.errorMessage}
+        </div>
       </div>
     );
   }

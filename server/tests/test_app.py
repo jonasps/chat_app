@@ -19,6 +19,21 @@ class TestChatApp(unittest.TestCase):
         assert response.status_code == 200
         assert b'add front-end' in response.data
 
+    def test_posting_user_and_socket_id(self):
+        """ only save uniqe usernames acompanyd by socketIds"""
+        post_string = '{"username":"jonas", "socketId":"1234"}'
+        # valid post
+        response = self.client.post('/user', data=post_string)
+        assert response.status_code == 200
+
+        # invalid user already in list
+        response = self.client.post('/user', data=post_string)
+        assert response.status_code == 409
+
+        # invalid missing arguments
+        response = self.client.post('/user', data='{"username":"testName"}')
+        assert response.status_code == 422
+
     def test_initial_connection(self):
         """ socket connections are working """
         socketio = SocketIO('localhost', 5000, LoggingNamespace)
