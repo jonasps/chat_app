@@ -18,8 +18,7 @@ body {
 }
 
 .container {
-  min-height: 100vh;
-  margin: 23% auto;
+  margin: 3rem auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -46,7 +45,7 @@ body {
   width: 100%;
   height: 30rem;
   background-color: #f1f1f1;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .main-input-style {
@@ -90,9 +89,18 @@ body {
   }
 }
 
-/*** mobile style */
+/*** small device style ***/
 
 @media all and (max-width: 500px) {
+  .container {
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .message-panel {
+    height: 23rem;
+  }
+
   .main-input-button,
   .main-input-style,
   .main-input-style.chat {
