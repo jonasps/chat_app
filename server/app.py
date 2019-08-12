@@ -50,9 +50,9 @@ def handle_message(message):
 @socketio.on('disconnect')
 def disconnect():
     """ free up user_name after user loggs in """
-    for user_name, socket_id in logged_in_users.items():
-        if socket_id == request.sid:
-            del logged_in_users[user_name]
+    disconnected_id = request.sid
+    global logged_in_users
+    logged_in_users = {u: v for u, v in logged_in_users.items() if v != disconnected_id}
 
 
 if __name__ == '__main__':
