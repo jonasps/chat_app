@@ -1,6 +1,7 @@
 const initialState = {
   name: "",
-  socketId: ""
+  socketId: "",
+  previousChatData: [],
 };
 
 export const chatReducer = (state = initialState, action) => {
@@ -12,6 +13,10 @@ export const chatReducer = (state = initialState, action) => {
     case "SET_SOCKET_ID":
       return Object.assign({}, state, {
         socketId: action.payload
+      });
+    case "PREVIOUS_MESSAGES":
+      return Object.assign({}, state, {
+        previousChatData: action.payload
       });
     default:
       return state;

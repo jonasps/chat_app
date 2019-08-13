@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import axios from "axios";
 
-import { sendLoginName } from "../actions";
+import { getPreviousChatMessages, sendLoginName } from "../actions";
 import { userPath } from "../constants";
 import { setErrorMessage } from "../utils/setErrorMessage";
 
@@ -17,13 +17,14 @@ export class NameInput extends Component {
   }
 
   postNameToServer() {
-    const { socketId, sendName } = this.props;
+    const { socketId, sendName, previousChatMessages } = this.props;
     const { name } = this.state;
     const data = { username: name, socketId };
     axios
       .post(userPath, data)
       .then(() => {
         sendName(name);
+        previousChatMessages(socketId);
       })
       .catch(error => {
         console.log(error);
@@ -68,7 +69,8 @@ export class NameInput extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  sendName: bindActionCreators(sendLoginName, dispatch)
+  sendName: bindActionCreators(sendLoginName, dispatch),
+  previousChatMessages: bindActionCreators(getPreviousChatMessages, dispatch),
 });
 
 const mapStateToProps = state => ({

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { socketWrapper } from "../utils/socketWrapper";
+import { connect } from "react-redux";
 
 export class MessagePanel extends Component {
   constructor(props) {
@@ -16,6 +17,11 @@ export class MessagePanel extends Component {
   }
 
   componentDidUpdate() {
+    if (!this.state.messages.length) {
+      this.setState({
+        messages: this.props.previousChatData
+      });
+    }
     this.scrollToBottom();
   }
 
@@ -49,4 +55,8 @@ export class MessagePanel extends Component {
   }
 }
 
-export default socketWrapper()(MessagePanel);
+const mapStateToProps = state => ({
+  previousChatData: state.previousChatData
+});
+
+export default connect(mapStateToProps)(socketWrapper()(MessagePanel));
